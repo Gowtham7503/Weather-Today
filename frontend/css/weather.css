@@ -1,0 +1,117 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+h1, p {
+    margin: 0;
+}
+
+.output {
+    position: relative;
+    z-index: 1;
+    margin-top: 75px;
+    width: min(90%, 1200px);
+    max-height: calc(100vh - 120px);
+    padding: 40px 50px;
+
+    background: rgba(0, 0, 0, 0.38);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+
+    z-index: 1;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.65); /* darker & uniform */
+    z-index: 0;
+    pointer-events: none; /* clicks pass through */
+}
+
+/* city name */
+.gradient-text {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.05;
+
+    background: linear-gradient(270deg, #00c6ff, #0072ff, #00c6ff);
+    background-size: 400% 400%;
+    animation: gradientMove 6s ease infinite, fadeIn 1.5s ease forwards;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* temperature */
+.temp {
+    font-size: 36px;
+    font-weight: 700;
+    color: #eaf8ff;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+/* weather details */
+.weather-info {
+    font-size: 18px;
+    line-height: 1.8;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.weather-info p {
+    margin: 2px 0;
+}
+
+.weather-info strong {
+    font-weight: 600;
+    color: #cfefff;
+}
+
+/* animations */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

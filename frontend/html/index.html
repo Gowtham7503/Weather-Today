@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Today-Home</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="shortcut icon" href="../images/weatherToday.jpg" type="image/x-icon">
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bgVideo" class="bg-video">
+        <source src="../video/seamless_loop.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <div class="textContent" id="textContent">
+            <h1 class="text">
+                Weather <span id="gradient-text" class="gradient-text">today</span>
+            </h1>
+            <p class="caption" id="caption"></p>
+        </div>
+        <div class="input-tags" id="input-tags">
+            <input type="text" id="city" class="city" placeholder="enter your city name (example: Hyderabad,New Delhi etc..)">
+            <button type="submit" onclick="callerFun()" id="submit" class="submit">search</button>
+        </div>
+    </div>
+        
+    <footer>
+        <p> © All rights are reserved 2026 </p>
+    </footer>
+    <script src="../js/effects.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>
