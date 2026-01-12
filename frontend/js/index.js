@@ -10,5 +10,5 @@ function callerFun() {
     localStorage.setItem("city", city);
 
 
-    window.location.href = "weather.html";
+    window.location.href = "html/weather.html";
 }
