@@ -1,7 +1,6 @@
 const fetchWeather = async (cityName) => {
     const apiKey = "755999c058dcde6c6d93e46ecc357f87";
     const output = document.getElementById("output");
-    const title = document.title;
 
     try {
         const response = await fetch(
@@ -15,11 +14,12 @@ const fetchWeather = async (cityName) => {
         const data = await response.json();
         const description =
             data.weather[0].description.replace(/\b\w/g, c => c.toUpperCase());
-        title.innerHTML = `${cityName}`;
+
+        // ✅ Correct title update
+        document.title = cityName;
 
         output.innerHTML = `
             <h1 class="gradient-text">${data.name}</h1>
-
             <p class="temp">${Math.floor(data.main.temp)}°C</p>
 
             <div class="weather-info">
@@ -31,7 +31,6 @@ const fetchWeather = async (cityName) => {
                 <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
             </div>
         `;
-
     } catch (err) {
         output.innerHTML = `<p>Unable to fetch weather data</p>`;
         console.error(err);
@@ -53,15 +52,29 @@ async function fetchCityPhoto(city) {
 
         const data = await res.json();
 
-        if (data.results && data.results.length > 0) {
-            const imageUrl = data.results[0].urls.regular;
-
-            document.body.style.backgroundImage = `url(${imageUrl})`;
-        } else {
-            console.warn("No images found for city");
+        if (data.results?.length) {
+            document.body.style.backgroundImage =
+                `url(${data.results[0].urls.regular})`;
         }
-
     } catch (err) {
         console.error("Failed to load city image", err);
     }
+}
+
+async function callerFun() {
+    const input = document.getElementById("city");
+    const city = input.value.trim();
+
+    if (!city) {
+        alert("Please enter a city name");
+        return;
+    }
+
+    localStorage.setItem("city", city);
+
+    // 🖼 FIRST load photo
+    await fetchCityPhoto(city);
+
+    // 🌦 THEN load weather
+    await fetchWeather(city);
 }

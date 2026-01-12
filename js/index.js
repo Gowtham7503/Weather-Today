@@ -6,7 +6,6 @@ function callerFun() {
         return;
     }
 
-
     localStorage.setItem("city", city);
 
 
