@@ -1,6 +1,7 @@
 const fetchWeather = async (cityName) => {
     const apiKey = "755999c058dcde6c6d93e46ecc357f87";
     const output = document.getElementById("output");
+    const title = document.title;
 
     try {
         const response = await fetch(
@@ -14,6 +15,7 @@ const fetchWeather = async (cityName) => {
         const data = await response.json();
         const description =
             data.weather[0].description.replace(/\b\w/g, c => c.toUpperCase());
+        title.innerHTML = `${cityName}`;
 
         output.innerHTML = `
             <h1 class="gradient-text">${data.name}</h1>
