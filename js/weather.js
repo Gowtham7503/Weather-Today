@@ -15,8 +15,7 @@ const fetchWeather = async (cityName) => {
         const description =
             data.weather[0].description.replace(/\b\w/g, c => c.toUpperCase());
 
-        // ✅ Correct title update
-        document.title = cityName;
+        document.title = `${cityName.replace(/\b\w/g, char => char.toUpperCase())} Today`;
 
         output.innerHTML = `
             <h1 class="gradient-text">${data.name}</h1>

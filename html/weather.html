@@ -10,8 +10,17 @@
 <body>
 
     <div class="input-tags" id="input-tags">
-        <input type="text" id="city" class="city" placeholder="enter your city name (example: Hyderabad,New Delhi etc..)">
-        <button type="submit" onclick="callerFun()" id="submit" class="submit">search</button>
+        <form onsubmit="callerFun(); return false;">
+            <input
+                type="text"
+                id="city"
+                class="city"
+                placeholder="enter your city name (example: Hyderabad, New Delhi etc..)"
+            >
+            <button type="submit" id="submit" class="submit">
+                search
+            </button>
+        </form>
     </div>
 
     <div class="overlay"></div>
